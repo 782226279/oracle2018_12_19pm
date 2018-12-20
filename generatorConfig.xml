@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+	<!-- 指向到本地电脑里面的jdbc驱动路径 -->
+	<classPathEntry
+		location="E:/oracle/help/mysql/mysql-connector-java-5.1.18-bin.jar" />
+
+
+	<context id="context1">
+
+		<commentGenerator>
+			<!-- 去除自动生成的注释 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<!--数据库链接地址账号密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/test2" userId="root"
+			password="1234" />
+
+		<!--生成Model类存放位置 -->
+		<javaModelGenerator targetPackage="com.pojo"
+			targetProject="oracle2018_12_19pm/src/main/java" />
+
+		<!--生成映射文件存放位置 -->
+		<sqlMapGenerator targetPackage="com.mapperxml"
+			targetProject="oracle2018_12_19pm/src/main/java" />
+
+		<!--生成Dao类存放位置 -->
+		<javaClientGenerator targetPackage="com.dao"
+			targetProject="oracle2018_12_19pm/src/main/java" type="XMLMAPPER" />
+
+		<!--生成对应表及类名 -->
+		<table tableName="course" domainObjectName="Course"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false"></table>
+
+	</context>
+</generatorConfiguration>

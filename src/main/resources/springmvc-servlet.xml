@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!-- spring mvc核心配置文件 -->
+
+
+	<!--配置扫描路径 spring可以自动去扫描base-pack下面或者子包下面的Java文件，如果扫描到有 -->
+	<!-- @Component @Controller@Service等这些注解的类，则把这些类注册为bean -->
+	<context:component-scan base-package="com.controller"></context:component-scan>
+
+	<!--启用MVC注解功能 增加了下面的<mvc:resources >必须使用，否则不能访问spring控制器(Controller) -->
+	<mvc:annotation-driven />
+
+
+	<!--能够访问静态静态,(因为spring过滤器是拦截 / 所有的要求)如果不加，所有的静态资源都会经过spring的处理，这个时候静态资源不能访问了 -->
+	<!-- <mvc:resources location="/images/" mapping="/images/**" /> -->
+
+
+	<!-- 配置视图页面解析 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		id="internalResourceViewResolver">
+		<!-- 前缀 -->
+		<property name="prefix" value="/WEB-INF/view/" />
+		<!-- 后缀 -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+
+</beans>
